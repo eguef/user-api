@@ -6,25 +6,22 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmpty: false
+        notEmpty: true
       }
     },
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmpty: false
+        notEmpty: true
       }
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
+      unique: true
     },
-    marital_status: {
+    maritalStatus: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -34,9 +31,8 @@ module.exports = function (sequelize, DataTypes) {
         }
       }
     },
-    deprecated_at: {
-      type: DataTypes.Date
-    }
+    deprecatedAt: DataTypes.DATE
+
   }, {});
   User.associate = function (models) {
     // associations can be defined here
