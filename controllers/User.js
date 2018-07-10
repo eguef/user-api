@@ -1,6 +1,6 @@
 class User {
   create(req, res) {
-    res.send('working');
+    const { firstName, lastName, email, maritalStatus, password} = req.body;
   }
 
   update(req, res) {
