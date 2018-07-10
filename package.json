@@ -1,0 +1,36 @@
+{
+  "name": "user-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./package-lock.json,./README.md,./npm-debug.log --copy-files",
+    "db:migrate": "sequelize db:migrate:undo:all && sequelize db:migrate",
+    "start": "node server.js",
+    "dev": "npm run build && node ./dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eguonoefe/user-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eguonoefe/user-api/issues"
+  },
+  "homepage": "https://github.com/eguonoefe/user-api#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.27.0",
+    "sequelize-cli": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "rimraf": "^2.6.2"
+  }
+}
