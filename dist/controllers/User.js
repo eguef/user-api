@@ -60,11 +60,9 @@ var User = function () {
   }, {
     key: 'update',
     value: function update(req, res) {
-      var _this2 = this;
-
       var run_method = function run_method(record) {
         if (record == null) {
-          throw new AppError(_this2.name + ' does not exist', 404);
+          throw 'User exists for this email';
         }
 
         record.update(req.body).then(function (updatedRecord) {
@@ -74,12 +72,12 @@ var User = function () {
         });
       };
 
-      this.findRecord(res, { id: req.body.id }, run_method);
+      this.findRecord(res, { id: req.params.id }, run_method);
     }
   }, {
     key: 'listUsersById',
     value: function listUsersById(req, res) {
-      _models2.default.User.findAll({ where: { deprecated_at: null } }).then(function (records) {
+      _models2.default.User.findAll({ where: { deprecatedAt: null } }).then(function (records) {
         res.status(200).send(records);
       }).catch(function (err) {
         res.send(err);
@@ -88,7 +86,7 @@ var User = function () {
   }, {
     key: 'listUsersByMaritalStatus',
     value: function listUsersByMaritalStatus(req, res) {
-      _models2.default.User.findAll({ where: { deprecated_at: null, marital_status: req.body.status } }).then(function (records) {
+      _models2.default.User.findAll({ where: { deprecatedAt: null, maritalStatus: req.params.status } }).then(function (records) {
         res.status(200).send(records);
       }).catch(function (err) {
         res.send(err);
@@ -97,11 +95,9 @@ var User = function () {
   }, {
     key: 'details',
     value: function details(req, res) {
-      var _this3 = this;
-
       var run_method = function run_method(record) {
         if (record == null) {
-          throw new AppError(_this3.name + ' does not exist', 404);
+          throw 'User does not exists for this email';
         }
         res.status(200).send(record);
       };
@@ -110,11 +106,9 @@ var User = function () {
   }, {
     key: 'delete',
     value: function _delete(req, res) {
-      var _this4 = this;
-
       var run_method = function run_method(record) {
         if (record == null) {
-          throw new AppError(_this4.name + ' does not exist', 404);
+          throw 'User does not exists for this email';
         }
 
         var currentTime = new Date();
