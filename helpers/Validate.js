@@ -25,3 +25,5 @@ class Validate {
       && this.maritalStatus(params['maritalStatus']);
   }
 }
+
+export default new Validate();
